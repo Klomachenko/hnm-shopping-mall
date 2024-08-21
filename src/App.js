@@ -3,6 +3,7 @@ import './App.css';
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
 import ProductDetail from './page/ProductDetail';
+import Navbar from './component/Navbar';
 
 // 1. 전체상품페이지, 로그인, 상품상세페이지
 // 2. 전체 상품페이지에서 전체 상품을 볼 수 있다
@@ -17,6 +18,7 @@ import ProductDetail from './page/ProductDetail';
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path='/' element={<ProductAll />} />
         <Route path='/login' element={<Login />} />
