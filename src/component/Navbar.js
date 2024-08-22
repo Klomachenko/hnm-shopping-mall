@@ -8,6 +8,14 @@ const Navbar = () => {
   const goToLogin = () => {
     navigate('/login');
   };
+  const search = (event) => {
+    if (event.key === 'Enter') {
+      // 입력한 검색어 읽어오기
+      let keyword = event.target.value;
+      // url 바꿔주기
+      navigate(`/?q=${keyword}`);
+    }
+  };
   const menuList = [
     '여성',
     'Divided',
@@ -42,7 +50,7 @@ const Navbar = () => {
         </ul>
         <div className='search'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <input type='text' placeholder='제품 검색' />
+          <input type='text' placeholder='제품 검색' onKeyDown={search} />
         </div>
       </div>
     </div>
