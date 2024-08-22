@@ -39,3 +39,26 @@
 .search input {
   border-width: 0;
 }
+
+.card {
+  border: none !important;
+  margin-bottom: 10px;
+  transition: all 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.choice {
+  color: #63786a;
+  font-weight: 700;
+  font-size: 11px;
+  height: 20px;
+}
+
+.new-product {
+  font-size: 11px;
+  height: 20px;
+}

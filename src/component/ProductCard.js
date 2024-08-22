@@ -3,12 +3,14 @@ import React from 'react';
 const ProductCard = ({ item }) => {
   console.log(item);
   return (
-    <div>
+    <div className='card'>
       <img src={item?.img} alt='' />
-      <div>{item?.choice === true ? 'Conscious Choice' : ''}</div>
+      <div className='choice'>
+        {item?.choice === true ? 'Conscious Choice' : ''}
+      </div>
       <div>{item?.title}</div>
       <div>₩{item?.price}</div>
-      <div>{item?.new === true ? '신제품' : ''}</div>
+      <div className='new-product'>{item?.new === true ? '신제품' : ''}</div>
     </div>
   );
 };
