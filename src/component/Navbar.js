@@ -6,15 +6,12 @@ import {
   faList,
 } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery, MediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const mobileView = useMediaQuery({ maxWidth: 767 });
   const navigate = useNavigate();
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const toggleMobileMenu = () => {
-    setShowMobileMenu(!showMobileMenu); // 메뉴 표시 여부 토글
-  };
+
   const goToHome = () => {
     navigate('/');
   };
