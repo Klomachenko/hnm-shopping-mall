@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faMagnifyingGlass,
+  faList,
+} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery, MediaQuery } from 'react-responsive';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
+  const mobileView = useMediaQuery({ maxWidth: 767 });
   const navigate = useNavigate();
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu); // 메뉴 표시 여부 토글
+  };
   const goToHome = () => {
     navigate('/');
   };
@@ -53,17 +63,28 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           onClick={goToHome}
         />
       </div>
-      <div className='menu-area'>
-        <ul className='menu-list'>
-          {menuList.map((menu) => (
-            <li>{menu}</li>
-          ))}
-        </ul>
-        <div className='search'>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <input type='text' placeholder='제품 검색' onKeyDown={search} />
+      {mobileView ? (
+        <div className='menu-container'>
+          <FontAwesomeIcon className='list-icon' icon={faList} />
+          <div className='menu-area-mobile'>
+            {menuList.map((menu) => (
+              <div key={menu}>{menu}</div>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className='menu-area'>
+          <ul className='menu-list'>
+            {menuList.map((menu) => (
+              <li>{menu}</li>
+            ))}
+          </ul>
+          <div className='search'>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <input type='text' placeholder='제품 검색' onKeyDown={search} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
