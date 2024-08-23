@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
+  const goToHome = () => {
+    navigate('/');
+  };
   const goToLogin = () => {
     navigate('/login');
   };
@@ -47,6 +50,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           width={100}
           src='https://upload.wikimedia.org/wikipedia/commons/e/e5/HM-Logo.png?20110120234711'
           alt=''
+          onClick={goToHome}
         />
       </div>
       <div className='menu-area'>
