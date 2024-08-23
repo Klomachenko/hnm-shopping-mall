@@ -9,7 +9,7 @@ const ProductAll = () => {
   const getProducts = async () => {
     let searchQuery = query.get('q') || '';
     console.log('쿼리값은', searchQuery);
-    let url = `http://localhost:5000/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/Klomachenko/hnm-shopping-mall/products?q=${searchQuery}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log('받아온 데이터:', data); // 데이터 확인
