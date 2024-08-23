@@ -22,16 +22,21 @@ function App() {
   const [authenticate, setAuthenticate] = useState(false);
 
   useEffect(() => {
-    console.log('aaa', authenticate);
+    console.log('로그인 상태', authenticate);
   }, [authenticate]);
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path='/' element={<ProductAll />} />
         <Route
           path='/login'
-          element={<Login setAuthenticate={setAuthenticate} />}
+          element={
+            <Login
+              setAuthenticate={setAuthenticate}
+              authenticate={authenticate}
+            />
+          }
         />
         <Route
           path='/product/:id'

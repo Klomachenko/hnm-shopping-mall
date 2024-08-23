@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
@@ -14,6 +14,11 @@ const Navbar = () => {
       let keyword = event.target.value;
       // url 바꿔주기
       navigate(`/?q=${keyword}`);
+    }
+  };
+  const userLogout = () => {
+    if (authenticate === true) {
+      setAuthenticate(false);
     }
   };
   const menuList = [
@@ -32,7 +37,9 @@ const Navbar = () => {
       <div>
         <div className='login-button' onClick={goToLogin}>
           <FontAwesomeIcon icon={faUser} />
-          <div>로그인</div>
+          <div onClick={userLogout}>
+            {authenticate === false ? '로그인' : '로그아웃'}
+          </div>
         </div>
       </div>
       <div className='nav-section'>
