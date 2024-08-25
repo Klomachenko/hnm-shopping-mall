@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const mobileView = useMediaQuery({ maxWidth: 767 });
   const navigate = useNavigate();
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const goToHome = () => {
     navigate('/');
@@ -30,6 +31,9 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     if (authenticate === true) {
       setAuthenticate(false);
     }
+  };
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible); // 메뉴 표시 상태를 토글
   };
   const menuList = [
     '여성',
@@ -62,12 +66,18 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
       </div>
       {mobileView ? (
         <div className='menu-container'>
-          <FontAwesomeIcon className='list-icon' icon={faList} />
-          <div className='menu-area-mobile'>
-            {menuList.map((menu) => (
-              <div key={menu}>{menu}</div>
-            ))}
-          </div>
+          <FontAwesomeIcon
+            className='list-icon'
+            icon={faList}
+            onClick={toggleMenu}
+          />
+          {menuVisible && (
+            <div className='menu-area-mobile'>
+              {menuList.map((menu) => (
+                <div key={menu}>{menu}</div>
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div className='menu-area'>
